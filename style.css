@@ -72,16 +72,24 @@ button:hover {
 
 /* Floating Hearts Animation */
 @keyframes floating-hearts {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-100vh); opacity: 0; }
+    0% { 
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+    100% { 
+        transform: translateY(-100vh); /* Move to the top */
+        opacity: 0; /* Fade out at the top */
+    }
 }
 
 .heart {
     position: absolute;
+    bottom: -10px; /* Start at the very bottom */
+    left: 50%; /* Start near the center */
     color: red;
     font-size: 24px;
     animation: floating-hearts 5s infinite linear;
-    pointer-events: none; /* Prevent hearts from blocking scrolling */
+    pointer-events: none; /* Prevent interaction issues */
 }
 
 /* 📱 Mobile Responsiveness */

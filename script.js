@@ -3,6 +3,18 @@ document.getElementById("openLetter").addEventListener("click", function() {
     document.getElementById("letterContent").classList.toggle("hidden");
 });
 
+// Background Music Handling
+document.addEventListener("DOMContentLoaded", function () {
+    let audio = document.getElementById("bg-music");
+
+    // Play music when user clicks anywhere on the page
+    document.body.addEventListener("click", function () {
+        if (audio.paused) {
+            audio.play().catch(error => console.log("Autoplay prevented:", error));
+        }
+    });
+});
+
 // Floating hearts effect
 function createHeart() {
     const heart = document.createElement("div");

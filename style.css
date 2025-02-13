@@ -6,18 +6,21 @@ body {
     color: white;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /* Allow vertical scrolling */
+    min-height: 100vh; /* Ensure full height */
 }
 
 /* Main Container */
 .container {
     max-width: 600px;
-    margin: 100px auto;
+    margin: 50px auto; /* Reduced margin for better mobile view */
     background: white;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     color: #d6336c;
+    min-height: auto; /* Prevent height issues */
 }
 
 /* Heartbeat Animation for Title */
@@ -62,6 +65,9 @@ button:hover {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     font-style: italic;
     line-height: 1.5;
+    max-width: 90%; /* Make it responsive */
+    overflow-y: auto; /* Allow scrolling inside */
+    max-height: 80vh; /* Prevents it from getting too large */
 }
 
 /* Floating Hearts Animation */
@@ -75,4 +81,19 @@ button:hover {
     color: red;
     font-size: 24px;
     animation: floating-hearts 5s infinite linear;
+    pointer-events: none; /* Prevent hearts from blocking scrolling */
+}
+
+/* 📱 Mobile Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        width: 90%; /* Make it more fluid */
+        margin: 30px auto; /* Adjust for smaller screens */
+        padding: 15px;
+    }
+
+    #letterContent {
+        max-height: none; /* Allow full scrolling */
+        overflow-y: visible;
+    }
 }

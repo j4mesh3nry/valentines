@@ -20,7 +20,8 @@ body {
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     color: #d6336c;
-    min-height: auto; /* Prevent height issues */
+    position: relative; /* Needed for hearts to appear inside */
+    overflow: hidden; /* Prevent hearts from going outside */
 }
 
 /* Heartbeat Animation for Title */
@@ -70,26 +71,21 @@ button:hover {
     max-height: 80vh; /* Prevents it from getting too large */
 }
 
-/* Floating Hearts Animation */
+/* Floating Hearts Animation - FIXED */
 @keyframes floating-hearts {
-    0% { 
-        transform: translateY(0); 
-        opacity: 1; 
-    }
-    100% { 
-        transform: translateY(-100vh); /* Move to the top */
-        opacity: 0; /* Fade out at the top */
-    }
+    0% { transform: translateY(100%); opacity: 1; } /* Start at the bottom of .container */
+    100% { transform: translateY(-100%); opacity: 0; } /* Move up to the topmost part */
 }
 
 .heart {
     position: absolute;
-    bottom: -10px; /* Start at the very bottom */
-    left: 50%; /* Start near the center */
     color: red;
     font-size: 24px;
-    animation: floating-hearts 5s infinite linear;
-    pointer-events: none; /* Prevent interaction issues */
+    bottom: 0; /* Start from the bottom of .container */
+    left: 50%;
+    transform: translateX(-50%);
+    animation: floating-hearts 5s linear infinite;
+    pointer-events: none; /* Prevent hearts from blocking scrolling */
 }
 
 /* 📱 Mobile Responsiveness */
